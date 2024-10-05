@@ -8,6 +8,10 @@
 
 # Red-Text-Adventure
 
+red -c Game.red
+
+Game
+
 https://www.red-lang.org/p/download.html
 
 <a href="https://cursed-entertainment.itch.io/" target="_blank">

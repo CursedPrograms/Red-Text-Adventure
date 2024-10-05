@@ -1,7 +1,9 @@
 Red [
-    Title: "Dungeon Escape"
-    Author: "Your Name"
+    Title: "Game"
+    Author: "Cursed Entertainment"
     Version: 1.0
+        Needs:  'View
+    Config: [GUI-engine: 'terminal]
 ]
 
 ; Global variables
@@ -15,6 +17,7 @@ display-room: func [room] [
         2 [print "You are in Room 2. You see a shiny key on the floor."]
         3 [print "You are in Room 3. There's a door to the south."]
         4 [print "Congratulations! You found the exit!"]
+        default [print "You are in an unknown room."]
     ]
 ]
 
@@ -33,9 +36,9 @@ handle-input: func [input] [
             ]
         ]
         "go south" [
-            if room = 3 [
-                room: 2
-                print "You move to Room 1."
+            if room = 2 [
+                room: 1
+                print "You move back to Room 1."
             ] else [
                 print "You can't go that way."
             ]
@@ -66,12 +69,11 @@ handle-input: func [input] [
 
 ; Game loop
 print "Welcome to Dungeon Escape!"
-while [true] [
+while [room < 4] [
     display-room room
     print "What would you like to do? (look, go north, go south, take key, unlock door, quit)"
     input: to-string input
     handle-input input
-    if room = 4 [break] ; End the game if the player escapes
 ]
 
 print "Game Over."
